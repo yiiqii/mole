@@ -1,0 +1,33 @@
+{
+	"meta": {
+		"image": "countdown_tile.png",
+		"size": {"w":465,"h":112},
+		"scale": "1"
+	},
+	"frames": {
+		"bar.png":
+		{
+			"frame": {"x":2,"y":2,"w":461,"h":29},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":461,"h":29},
+			"sourceSize": {"w":461,"h":29}
+		},
+		"track.png":
+		{
+			"frame": {"x":2,"y":35,"w":461,"h":29},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":461,"h":29},
+			"sourceSize": {"w":461,"h":29}
+		},
+		"label.png":
+		{
+			"frame": {"x":2,"y":68,"w":121,"h":42},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":121,"h":42},
+			"sourceSize": {"w":121,"h":42}
+		}
+	}
+}

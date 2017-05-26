@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>打地鼠，抢红包</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="full-screen" content="yes"/>
+<meta name="screen-orientation" content="portrait"/>
+<meta name="x5-fullscreen" content="true"/>
+<meta name="360-fullscreen" content="true"/>
+</head>
+<style>
+html, body, p, div {margin:0;padding:0;}
+body {background-color: #000;font-size:14px;}
+html, body {height: 100%;overflow: hidden}
+.mole_cell {position:absolute;top:45%;left:50%;height:79px;width:80px;margin-left: -40px;margin-top: -80px;-webkit-animation: loadingAnimate 1s step-end infinite;}
+.mole_cell img {display: block;margin-top: 100%;width: 100%;}
+.hole_cell {position:absolute;top:45%;left:50%;background:#000;margin-left:-40px;margin-top:15px;height: 80px;width: 80px}
+p {position:absolute;top:45%;width:100%;padding-top:20px;text-align:center;color:#ddd;}
+@-webkit-keyframes loadingAnimate {
+    0% {
+        padding-top: 0;
+    }
+    50% {
+        padding-top: 4px;
+    }
+    100% {
+        padding-top: 0;
+    }
+}
+</style>
+<body>
+<div class="mole_cell">
+    <img id="progress" src="res/images/loading_mole.png" />
+</div>
+<div class="hole_cell" id="hole"></div>
+<p id="percent">加载中..</p>
+<canvas id="TinyCanvas"></canvas>
+
+<script>
+  window.WebGLRenderingContext = null;
+</script>
+<script src='http://tinyjs.net/libs/tiny.full.debug.js'></script>
+<script src='./dist/game.js'></script>
+<script>
+    //Dom和游戏的Bridge
+    window.GAME_BRIDGE = {
+        //游戏装载完成的回调
+        gameInit: function(){
+//            alert('游戏准备');
+        },
+        //游戏开始的回调
+        gameStart: function(){
+//            alert('游戏开始');
+        },
+        //游戏结束的回调
+        gameOver: function(scores){
+            //'pd',//排队
+            //'dc',//堵车
+            //'ty',//停用
+            //'ali',//支付宝
+            //{dc: {time: 6, score: 180}, pd: {time: 3, score: 60}, ali: {time: 2, score: 100}}
+            alert('游戏结束，得分:' + JSON.stringify(scores));
+        },
+        //游戏重新开始
+        gameRestart: function(){
+            Tiny.app.replaceScene(new StartLayer(), 'Fade');
+        },
+        //游戏继续回调
+        gameResume: function(){
+
+        },
+        //空函数，由游戏重新覆盖
+        gamePause: function(){
+            //请不要在此写任何逻辑
+        },
+        //[按钮事件]活动攻略的回调
+        guideHandler: function(){
+            console.log('打开攻略');
+            this.gamePause();
+        },
+        //[按钮事件]查看奖品的回调
+        viewPrizeHandler: function(){
+            console.log('查看奖品');
+//            this.gameRestart();
+            this.gamePause();
+        },
+        //[按钮事件]分享的回调
+        shareHandler: function(){
+            this.gamePause();
+        }
+    }
+</script>
+</body>
+</html>
