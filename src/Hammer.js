@@ -28,7 +28,7 @@ Hammber.prototype.updatePos = function (pos) {
 
 Hammber.prototype.beat = function () {
   var self = this;
-  var rotateAction = Tiny.RotateBy(100, {rotation: Tiny.deg2radian(-30)});
+  var rotateAction = Tiny.RotateTo(100, {rotation: Tiny.deg2radian(-30)});
   var fadeOutAction = Tiny.FadeOut(300);
   fadeOutAction.setDelay(500);
   rotateAction.onComplete = function () {
@@ -38,5 +38,5 @@ Hammber.prototype.beat = function () {
   Tiny.Action.cleanup(this);
   this.setRotation(0);
   this.setOpacity(1);
-  this.runAction(rotateAction);
+  this.runAction(Tiny.Back(rotateAction));
 };
