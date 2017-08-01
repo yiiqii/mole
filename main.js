@@ -12,7 +12,6 @@
     }
   };
   if (navigator.userAgent.toLowerCase().indexOf('mobile') > -1) {
-    config.height = window.VIEW_HEIGHT;
     config._is4S = window.VIEW_HEIGHT <= 480;
     config._isiPad = window.VIEW_HEIGHT <= 400;
   }
